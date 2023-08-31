@@ -1,0 +1,63 @@
+[package]
+name = "yew-element-ui"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+yew = { version = "0.20.0", features = ["csr"] }
+wasm-bindgen = "0.2.83"
+js-sys = "0.3.28"
+
+gloo = "0.8.1"
+gloo-console = "0.2.3"
+
+# 处理颜色相关
+hsv = "0.1.1"
+csscolorparser = "0.6.2"
+
+# Popper 绑定库
+popper-rs = { git = "https://github.com/ctron/popper-rs", features = ["debug", "yew"]}
+
+[dependencies.web-sys]
+version = "0.3.9"
+# We need to enable the `DomRect` feature in order to use the
+# `get_bounding_client_rect` method.
+features = [
+    "HtmlDocument",
+    "console",
+    "Element",
+    "DomTokenList",
+    "DomRect",
+    "HtmlElement",
+    "HtmlInputElement",
+    "HtmlTextAreaElement",
+    "CssStyleDeclaration",
+    "MouseEvent",
+    "DomRect",
+    "IdbFactory",
+    "IdbOpenDbRequest",
+    "IdbRequest",
+    "IdbTransaction",
+    "IdbDatabase",
+    "IdbObjectStore",
+    "IdbIndex",
+    "IdbTransactionMode",
+    "IdbObjectStoreParameters",
+    "IdbCursorWithValue",
+    "IdbCursorDirection",
+    "IdbKeyRange",
+    "Navigator",
+    'Headers',
+    'Request',
+    'RequestInit',
+    'RequestMode',
+    'Response',
+    'CssStyleDeclaration'
+]
+
+[dependencies.chrono]
+version = "0.4.19"
+features = ["wasmbind", "js-sys"]
+
