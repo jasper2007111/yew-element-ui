@@ -53,6 +53,8 @@ pub use checkbox::checkbox::YELCheckbox;
 pub use checkbox::checkbox_group::YELCheckboxGroup;
 pub use checkbox::checkbox_button::YELCheckboxButton;
 
-
+mod tag;
+pub use tag::YELTag;
+pub use tag::YELTagType;
 
 
