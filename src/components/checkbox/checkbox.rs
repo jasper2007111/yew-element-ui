@@ -100,10 +100,6 @@ pub fn YELCheckbox(props: &YELCheckboxProps) -> Html {
     }
 }
 
-fn is_group(msg_ctx: &Option<UseReducerHandle<Message>>) -> bool {
-    return msg_ctx.is_some();
-}
-
 fn get_slot_span(props: &YELCheckboxProps) -> Html {
     if !props.children.is_empty() || !props.label.is_empty() {
         return html!(
