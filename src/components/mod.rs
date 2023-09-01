@@ -57,4 +57,15 @@ mod tag;
 pub use tag::YELTag;
 pub use tag::YELTagType;
 
+mod progress;
+pub use progress::YELProgress;
+pub use progress::YELProgressType;
+
+mod link;
+pub use link::YELLink;
+pub use link::YELLinkType;
+
+mod page_header;
+pub use page_header::YELPageHeader;
+
 
