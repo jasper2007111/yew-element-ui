@@ -1,12 +1,8 @@
 use yew::prelude::*;
-
-use std::rc::Rc;
+use gloo_console::warn;
 
 use crate::common::YELSize;
 use crate::components::YELInput;
-
-use gloo_console::log;
-use gloo_console::warn;
 
 #[derive(PartialEq, Properties)]
 pub struct YELInputNumberProps {
