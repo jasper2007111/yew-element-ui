@@ -67,7 +67,7 @@ pub struct YELInputProps {
     pub children: Children,
 
     #[prop_or_default]
-    pub placeholder: String,
+    pub placeholder: AttrValue,
 
     #[prop_or_default]
     pub on_input: Callback<String>,

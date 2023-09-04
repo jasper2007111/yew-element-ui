@@ -68,4 +68,9 @@ pub use link::YELLinkType;
 mod page_header;
 pub use page_header::YELPageHeader;
 
+mod slider;
+pub use slider::slider::YELSlider;
+
+mod input_number;
+pub use input_number::YELInputNumber;
 
