@@ -60,7 +60,7 @@ pub fn YELRadio(props: &YELRadioProps) -> Html {
     }
 
 
-    let onchange = {
+    let onchange: Callback<Event> = {
         let label = props.label.clone();
         let on_change = props.on_change.clone();
         let radio_ref_clone = radio_ref.clone();

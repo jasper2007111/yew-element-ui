@@ -50,6 +50,9 @@ pub struct YELInputNumberProps {
 
     #[prop_or_default]
     pub on_focus: Callback<FocusEvent>,
+
+    #[prop_or_default]
+    pub class: AttrValue
 }
 
 #[function_component]
@@ -239,6 +242,10 @@ fn get_div_classes(props: &YELInputNumberProps) -> Vec<String> {
 
     if get_controls_at_right(props) {
         classes.push("is-controls-right".to_string());
+    }
+
+    if !props.class.is_empty() {
+        classes.push(props.class.to_string());
     }
 
     classes
