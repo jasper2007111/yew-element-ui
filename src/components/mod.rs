@@ -74,3 +74,6 @@ pub use slider::slider::YELSlider;
 mod input_number;
 pub use input_number::YELInputNumber;
 
+mod tooltip;
+pub use tooltip::tooltip::YELTooltip;
+

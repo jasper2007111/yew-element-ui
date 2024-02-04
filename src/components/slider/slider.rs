@@ -1,5 +1,6 @@
 use yew::prelude::*;
 
+use super::slider_button::YELSliderButton;
 use crate::components::input_number::YELInputNumber;
 
 #[derive(PartialEq, Properties, Clone)]
@@ -9,6 +10,9 @@ pub struct YELSliderProps {
 
     #[prop_or(100)]
     pub max: i32,
+
+    #[prop_or(0.0)]
+    pub value: f64,
 
     #[prop_or_default]
     pub vertical: bool,
@@ -34,13 +38,13 @@ impl Component for YELSlider {
 
     fn create(ctx: &Context<Self>) -> Self {
         Self {
-            props: ctx.props().clone()
+            props: ctx.props().clone(),
         }
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
         html! {
-            <div 
+            <div
                 class={self.get_div_classes()}
                 role="slider"
                 aria-valuemin={self.props.min.to_string()}
@@ -56,18 +60,20 @@ impl Component for YELSlider {
                 <div
                     class={self.get_runway_class()}
                     >
-
+                    <YELSliderButton/>
                 </div>
             </div>
         }
     }
+
+    
 }
 
 impl YELSlider {
-    fn get_runway_style(&self)->String {
-
+    fn get_runway_style(&self) -> String {
+        "".to_string()
     }
-    fn get_runway_class(&self)->Vec<String> {
+    fn get_runway_class(&self) -> Vec<String> {
         let mut classes = vec!["el-slider__runway".to_string()];
         if self.props.show_input {
             classes.push("show-input".to_string());
@@ -80,7 +86,11 @@ impl YELSlider {
         classes
     }
 
-    fn get_div_classes(&self)->Vec<String> {
+    pub fn get_size() -> i32 {
+        0
+    }
+
+    fn get_div_classes(&self) -> Vec<String> {
         let mut classes = vec!["el-slider".to_string()];
         if self.props.vertical {
             classes.push("is-vertical".to_string());
@@ -93,9 +103,9 @@ impl YELSlider {
         classes
     }
 
-    fn slider_disabled(&self)->bool {
+    fn slider_disabled(&self) -> bool {
         if self.props.disabled {
-            return true
+            return true;
         }
         false
     }
