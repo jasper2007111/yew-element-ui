@@ -31,6 +31,9 @@ pub struct YELSliderButtonProps {
 
     #[prop_or_default]
     pub value: f64,
+
+    #[prop_or_default]
+    pub on_change: Callback<f64>,
 }
 
 pub enum YELSliderButtonMsg {
@@ -165,6 +168,7 @@ impl Component for YELSliderButton {
                 let value = steps*(length_per_step as f64) * ((max - min) as f64)*0.01 + min as f64;
                 // log!("value: ", value);
                 self.props.value = value;
+                self.props.on_change.emit(value);
                 true
             }
             YELSliderButtonMsg::OnDragEnd(e) => {

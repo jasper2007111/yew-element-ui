@@ -3,6 +3,8 @@ use yew::prelude::*;
 use super::slider_button::YELSliderButton;
 use crate::components::input_number::YELInputNumber;
 
+use gloo_console::log;
+
 #[derive(PartialEq, Properties, Clone)]
 pub struct YELSliderProps {
     #[prop_or_default]
@@ -25,12 +27,17 @@ pub struct YELSliderProps {
 
     #[prop_or_default]
     pub range: bool,
+
+    #[prop_or_default]
+    pub on_change: Callback<f64>
 }
 pub struct YELSlider {
     props: YELSliderProps,
 }
 
-pub enum YELSliderMsg {}
+pub enum YELSliderMsg {
+    OnValueChanged(f64)
+}
 
 impl Component for YELSlider {
     type Message = YELSliderMsg;
@@ -39,6 +46,16 @@ impl Component for YELSlider {
     fn create(ctx: &Context<Self>) -> Self {
         Self {
             props: ctx.props().clone(),
+        }
+    }
+
+    fn update(&mut self, ctx: &Context<Self>, msg: Self::Message) -> bool {
+        match msg {
+            YELSliderMsg::OnValueChanged(v) => {
+                self.props.value = v;
+                self.props.on_change.emit(v);
+                true
+            }
         }
     }
 
@@ -60,7 +77,10 @@ impl Component for YELSlider {
                 <div
                     class={self.get_runway_class()}
                     >
-                    <YELSliderButton/>
+                    <div class="el-slider__bar" style={self.get_bar_style()}></div>
+                    <YELSliderButton on_change={ctx.link().callback(|v|{
+                        YELSliderMsg::OnValueChanged(v)
+                    })}/>
                 </div>
             </div>
         }
@@ -72,6 +92,9 @@ impl Component for YELSlider {
 impl YELSlider {
     fn get_runway_style(&self) -> String {
         "".to_string()
+    }
+    fn get_bar_style(&self) -> String {
+        format!("width: {}%; left: {}%", self.props.value, 0)
     }
     fn get_runway_class(&self) -> Vec<String> {
         let mut classes = vec!["el-slider__runway".to_string()];
