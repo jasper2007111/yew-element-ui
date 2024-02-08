@@ -78,7 +78,7 @@ impl Component for YELSlider {
                     class={self.get_runway_class()}
                     >
                     <div class="el-slider__bar" style={self.get_bar_style()}></div>
-                    <YELSliderButton on_change={ctx.link().callback(|v|{
+                    <YELSliderButton value={self.props.value} on_change={ctx.link().callback(|v|{
                         YELSliderMsg::OnValueChanged(v)
                     })}/>
                 </div>

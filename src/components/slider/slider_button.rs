@@ -200,7 +200,7 @@ impl Component for YELSliderButton {
                 YELSliderButtonMsg::OnMouseDown(e)
             })}>
                 <YELTooltip>
-                    <div class="el-slider__button" ></div>
+                    <div class="el-tooltip el-slider__button" ></div>
                 </YELTooltip>
             </div>
         }
